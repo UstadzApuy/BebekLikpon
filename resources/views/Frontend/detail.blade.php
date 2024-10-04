@@ -8,7 +8,7 @@
                 <div class="car-details">
                     <div class="img rounded" style="background-image: url(images/bg_1.jpg);"></div>
                     <div class="text text-center">
-                        <h2>Mercedes Grand Sedan</h2>
+                        <h2>Ikan Wader</h2>
                     </div>
                 </div>
             </div>
@@ -22,8 +22,8 @@
                                     class="flaticon-dashboard"></span></div>
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
-                                    Mileage
-                                    <span>40,000</span>
+                                    Tipe Masakan
+                                    <span>Goreng, Bakar</span>
                                 </h3>
                             </div>
                         </div>
@@ -38,8 +38,8 @@
                                     class="flaticon-pistons"></span></div>
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
-                                    Transmission
-                                    <span>Manual</span>
+                                    Lalapan
+                                    <span>Include</span>
                                 </h3>
                             </div>
                         </div>
@@ -54,8 +54,8 @@
                                     class="flaticon-car-seat"></span></div>
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
-                                    Seats
-                                    <span>5 Adults</span>
+                                    Sambal
+                                    <span>Cabe Hijau, terasi, bawang</span>
                                 </h3>
                             </div>
                         </div>
@@ -70,8 +70,8 @@
                                     class="flaticon-diesel"></span></div>
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
-                                    Fuel
-                                    <span>Petrol</span>
+                                    Paket
+                                    <span>Tidak</span>
                                 </h3>
                             </div>
                         </div>

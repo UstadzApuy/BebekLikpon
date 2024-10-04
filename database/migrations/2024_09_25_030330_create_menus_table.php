@@ -17,6 +17,11 @@ return new class extends Migration
             $table->string('slug');
             $table->integer('price');
             $table->text('thumbnail');
+            $table->string('tipemasak');
+            $table->string('lalapan');
+            $table->string('sambal');
+            $table->string('paket');
+            $table->longtext('description');
             $table->timestamps();
         });
     }

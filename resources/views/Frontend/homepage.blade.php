@@ -86,62 +86,22 @@
       <div class="row">
         <div class="col-md-12">
           <div class="carousel-car owl-carousel">
+            @foreach($menus as $menu)
             <div class="item">
               <div class="car-wrap rounded ftco-animate">
-                <div class="img rounded d-flex align-items-end" style="background-image: url({{ asset('frontend/images/menu-1.jpg')}});">
+                <div class="img rounded d-flex align-items-end" style="background-image: url({{Storage::url($menu->thumbnail)}});">
                 </div>
                 <div class="text">
-                  <h2 class="mb-0"><a href="#">Burung Puyuh</a></h2>
+                  <h2 class="mb-0"><a href="#">{{$menu->title}}</a></h2>
                   <div class="d-flex mb-3">
-                    <p class="price ml-auto">Rp. 25.000 ,-<span>/net</span></p>
+                    <p class="price ml-auto">Rp. {{$menu->price}} ,-<span>/pcs</span></p>
                   </div>
                   <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Pesan Sekarang</a> <a
-                      href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                      href="{{route('menu.show',$menu->slug)}}" class="btn btn-secondary py-2 ml-1">Details</a></p>
                 </div>
               </div>
             </div>
-            <div class="item">
-              <div class="car-wrap rounded ftco-animate">
-                <div class="img rounded d-flex align-items-end" style="background-image: url({{ asset('frontend/images/menu-2.jpg')}});">
-                </div>
-                <div class="text">
-                  <h2 class="mb-0"><a href="#">Bebek Bakar</a></h2>
-                  <div class="d-flex mb-3">
-                    <p class="price ml-auto">Rp. 25.000 ,- <span>/net</span></p>
-                  </div>
-                  <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Pesan Sekarang</a> <a
-                      href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="car-wrap rounded ftco-animate">
-                <div class="img rounded d-flex align-items-end" style="background-image: url({{ asset('frontend/images/menu-3.jpg')}});">
-                </div>
-                <div class="text">
-                  <h2 class="mb-0"><a href="#">Ayam Goreng</a></h2>
-                  <div class="d-flex mb-3">
-                    <p class="price ml-auto">Rp. 25.000 ,- <span>/net</span></p>
-                  </div>
-                  <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Pesan Sekarang</a> <a
-                      href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="car-wrap rounded ftco-animate">
-                <div class="img rounded d-flex align-items-end" style="background-image: url({{ asset('frontend/images/menu-4.jpg')}});">
-                </div>
-                <div class="text">
-                  <h2 class="mb-0"><a href="#">Ikan Wader</a></h2>
-                  <div class="d-flex mb-3">
-                    <p class="price ml-auto">Rp. 25.000 ,- <span>/net</span></p>
-                  </div>
-                  <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Pesen Sekarang</a> <a
-                      href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </div>
@@ -174,8 +134,8 @@
     <div class="container">
       <div class="row justify-content-center mb-5">
         <div class="col-md-7 text-center heading-section ftco-animate">
-          <span class="subheading">Services</span>
-          <h2 class="mb-3">Our Latest Services</h2>
+          <span class="subheading">Layanan</span>
+          <h2 class="mb-3">Layanan - Layanan Kami</h2>
         </div>
       </div>
       <div class="row">
@@ -184,7 +144,7 @@
             <div class="icon d-flex align-items-center justify-content-center"><span
                 class="flaticon-wedding-car"></span></div>
             <div class="text w-100">
-              <h3 class="heading mb-2">Wedding Ceremony</h3>
+              <h3 class="heading mb-2">Reservasi</h3>
               <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
             </div>
           </div>
@@ -194,7 +154,7 @@
             <div class="icon d-flex align-items-center justify-content-center"><span
                 class="flaticon-transportation"></span></div>
             <div class="text w-100">
-              <h3 class="heading mb-2">City Transfer</h3>
+              <h3 class="heading mb-2">Pemesanan Online</h3>
               <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
             </div>
           </div>
@@ -203,7 +163,7 @@
           <div class="services services-2 w-100 text-center">
             <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car"></span></div>
             <div class="text w-100">
-              <h3 class="heading mb-2">Airport Transfer</h3>
+              <h3 class="heading mb-2">Catering</h3>
               <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
             </div>
           </div>
@@ -227,8 +187,8 @@
     <div class="container">
       <div class="row justify-content-end">
         <div class="col-md-6 heading-section heading-section-white ftco-animate">
-          <h2 class="mb-3">Do You Want To Earn With Us? So Don't Be Late.</h2>
-          <a href="#" class="btn btn-primary btn-lg">Become A Driver</a>
+          <h2 class="mb-3">Tunggu apalagi?</h2>
+          <a href="#" class="btn btn-primary btn-lg">Ayo Daftar Untuk Memesan</a>
         </div>
       </div>
     </div>
