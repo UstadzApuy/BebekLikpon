@@ -96,8 +96,10 @@
                   <div class="d-flex mb-3">
                     <p class="price ml-auto">Rp. {{$menu->price}} ,-<span>/pcs</span></p>
                   </div>
-                  <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Pesan Sekarang</a> <a
-                      href="{{route('menu.show',$menu->slug)}}" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                  <p class="d-flex mb-0 d-block">
+                    {{-- <a href="#" class="btn btn-primary py-2 mr-1">Pesan Sekarang</a>  --}}
+                    <a href="{{route('menu.show',$menu->slug)}}" class="btn btn-secondary py-2 ml-1">Details</a>
+                  </p>
                 </div>
               </div>
             </div>

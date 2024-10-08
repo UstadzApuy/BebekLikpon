@@ -1,14 +1,30 @@
 @extends('frontend.layout')
 
 @section('content')
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('{{ asset('frontend/images/bg_3.jpg')}}');"
+data-stellar-background-ratio="0.5">
+<div class="overlay"></div>
+<div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+        <div class="col-md-9 ftco-animate pb-5">
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i
+                            class="ion-ios-arrow-forward"></i></a></span> <span>Detail menu <i
+                        class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-3 bread">Detail Menu</h1>
+        </div>
+    </div>
+</div>
+</section>
+
+
 <section class="ftco-section ftco-car-details">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="car-details">
-                    <div class="img rounded" style="background-image: url(images/bg_1.jpg);"></div>
+                    <div class="img rounded" style="background-image: url({{Storage::url($menu->thumbnail)}})"></div>
                     <div class="text text-center">
-                        <h2>Ikan Wader</h2>
+                        <h2>{{$menu->title}}</h2>
                     </div>
                 </div>
             </div>
@@ -23,7 +39,7 @@
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
                                     Tipe Masakan
-                                    <span>Goreng, Bakar</span>
+                                    <span>{{$menu->tipemasak}}</span>
                                 </h3>
                             </div>
                         </div>
@@ -39,7 +55,7 @@
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
                                     Lalapan
-                                    <span>Include</span>
+                                    <span>{{$menu->lalapan}}</span>
                                 </h3>
                             </div>
                         </div>
@@ -55,7 +71,7 @@
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
                                     Sambal
-                                    <span>Cabe Hijau, terasi, bawang</span>
+                                    <span>{{$menu->sambal}}</span>
                                 </h3>
                             </div>
                         </div>
@@ -71,7 +87,7 @@
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
                                     Paket
-                                    <span>Tidak</span>
+                                    <span>{{$menu->paket}}</span>
                                 </h3>
                             </div>
                         </div>
@@ -96,13 +112,7 @@
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-manufacturer" role="tabpanel"
                             aria-labelledby="pills-manufacturer-tab">
-                            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                                unorthographic life One day however a small line of blind text by the name of Lorem
-                                Ipsum decided to leave for the far World of Grammar.</p>
-                            <p>When she reached the first hills of the Italic Mountains, she had a last view back on
-                                the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the
-                                subline of her own road, the Line Lane. Pityful a rethoric question ran over her
-                                cheek, then she continued her way.</p>
+                            <p>{{$menu->description}}</p>
                         </div>
                     </div>
                 </div>
