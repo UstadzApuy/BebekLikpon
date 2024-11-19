@@ -18,7 +18,9 @@ class MenuResource extends Resource
 {
     protected static ?string $model = Menu::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-book-open';
+
+    protected static ?string $navigationLabel = 'Menu';
 
     public static function form(Form $form): Form
     {
@@ -41,38 +43,42 @@ class MenuResource extends Resource
                 Forms\Components\FileUpload::make('thumbnail')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\CheckboxList::make('tipemasak')
-                    ->required()
+
+                Forms\Components\Select::make('tipe')
                     ->options([
-                        'goreng' => 'Goreng',
-                        'bakar' => 'Bakar',
-                        'rebus' => 'Rebus',
-                        'panggang' => 'Panggang',
+                        'Ala Carte' => 'Ala Carte',
+                        'Paket' => 'Paket',
                     ])
-                    ->columns(2)
-                    ->label('Tipe Masak')
-                    ->afterStateHydrated(function ($component, $state) {
-                        // Check if the state is already an array, if not, convert it
-                        if (is_string($state)) {
-                            $component->state(explode(',', $state));
+                    ->required(),
+                    Forms\Components\Select::make('kategori')
+                    ->options([
+                        'Makanan' => 'Makanan',
+                        'Minuman' => 'Minuman',
+                    ])
+                    ->required()
+                    ->reactive() // Agar perubahan kategori langsung mempengaruhi extra
+                    ->afterStateUpdated(function ($set, $state) {
+                        // Reset extra saat kategori berubah
+                        if ($state === 'Makanan') {
+                            $set('extra', 'Terong, Timun, Kol Putih');
+                        } elseif ($state === 'Minuman') {
+                            $set('extra', 'Es, Lemon Slice');
+                        } else {
+                            $set('extra', '');
                         }
-                    })
-                    ->dehydrateStateUsing(function ($state) {
-                        // Ensure the state is saved as a string
-                        return is_array($state) ? implode(',', $state) : $state;
-                    }),                
-                Forms\Components\TextInput::make('lalapan')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('sambal')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('paket')
-                    ->required()
-                    ->maxLength(255),
+                    }),
+                
+                Forms\Components\TextInput::make('extra')
+                    ->label('Komponen Tambahan')
+                    ->hint('Pisahkan dengan koma, contoh: "Terong, Timun, Kol Putih"')
+                    ->default('') // Inisiasi default untuk mempermudah perubahan
+                    ->visible(fn (callable $get) => in_array($get('kategori'), ['Makanan', 'Minuman']))
+                    ->afterStateUpdated(function ($state) {
+                        // Tidak perlu mengubah apapun, cukup simpan sebagai string
+                    }),
+                
                 Forms\Components\Textarea::make('description')
-                    ->required()
-                    ->columnSpanFull(),
+                    ->required(),
             ]);
     }
 
@@ -86,24 +92,19 @@ class MenuResource extends Resource
                 Tables\Columns\TextColumn::make('price')
                     ->money()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('tipemasak')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('paket')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                //
+                Tables\Columns\TextColumn::make('kategori')->label('Kategori'),
+                Tables\Columns\TextColumn::make('tipe')->label('Tipe Menu'),
+                Tables\Columns\TextColumn::make('extra')
+                ->label('Komponen Tambahan'),
+                Tables\Columns\TextColumn::make('description')->label('Deskripsi'),
+            
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

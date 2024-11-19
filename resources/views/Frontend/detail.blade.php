@@ -38,8 +38,8 @@ data-stellar-background-ratio="0.5">
                                     class="flaticon-dashboard"></span></div>
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
-                                    Tipe Masakan
-                                    <span>{{$menu->tipemasak}}</span>
+                                    Kategori
+                                    <span>{{$menu->kategori}}</span>
                                 </h3>
                             </div>
                         </div>
@@ -54,8 +54,8 @@ data-stellar-background-ratio="0.5">
                                     class="flaticon-pistons"></span></div>
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
-                                    Lalapan
-                                    <span>{{$menu->lalapan}}</span>
+                                    Tipe
+                                    <span>{{$menu->tipe}}</span>
                                 </h3>
                             </div>
                         </div>
@@ -70,24 +70,8 @@ data-stellar-background-ratio="0.5">
                                     class="flaticon-car-seat"></span></div>
                             <div class="text">
                                 <h3 class="heading mb-0 pl-3">
-                                    Sambal
-                                    <span>{{$menu->sambal}}</span>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md d-flex align-self-stretch ftco-animate">
-                <div class="media block-6 services">
-                    <div class="media-body py-md-4">
-                        <div class="d-flex mb-3 align-items-center">
-                            <div class="icon d-flex align-items-center justify-content-center"><span
-                                    class="flaticon-diesel"></span></div>
-                            <div class="text">
-                                <h3 class="heading mb-0 pl-3">
-                                    Paket
-                                    <span>{{$menu->paket}}</span>
+                                    extra
+                                    <span>{{$menu->extra}}</span>
                                 </h3>
                             </div>
                         </div>
@@ -173,56 +157,30 @@ data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 heading-section text-center ftco-animate mb-5">
-                <span class="subheading">Choose Car</span>
-                <h2 class="mb-2">Related Cars</h2>
+                
+                <h2 class="mb-2">Related Menu</h2>
             </div>
         </div>
         <div class="row">
+            @foreach($related_menu as $item)
             <div class="col-md-4">
                 <div class="car-wrap rounded ftco-animate">
                     <div class="img rounded d-flex align-items-end"
-                        style="background-image: url(images/car-1.jpg);">
+                        style="background-image: url({{ Storage::url($item->thumbnail) }});">
                     </div>
                     <div class="text">
-                        <h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
+                        <h2 class="mb-0"><a href="{{ route('menu.show', $item->slug) }}">{{ $item->title }}</a></h2>
                         <div class="d-flex mb-3">
-                            <p class="price ml-auto">$500 <span>/day</span></p>
+                            <p class="price ml-auto">{{ $item->price }} <span>/pcs</span></p>
                         </div>
-                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a
-                                href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                        <p class="d-flex mb-0 d-block">
+                            <a href="#" class="btn btn-primary py-2 mr-1">Book now</a>
+                            <a href="{{ route('menu.show', $item->slug) }}" class="btn btn-secondary py-2 ml-1">Details</a>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="car-wrap rounded ftco-animate">
-                    <div class="img rounded d-flex align-items-end"
-                        style="background-image: url(images/car-2.jpg);">
-                    </div>
-                    <div class="text">
-                        <h2 class="mb-0"><a href="car-single.html">Range Rover</a></h2>
-                        <div class="d-flex mb-3">
-                            <p class="price ml-auto">$500 <span>/day</span></p>
-                        </div>
-                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a
-                                href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="car-wrap rounded ftco-animate">
-                    <div class="img rounded d-flex align-items-end"
-                        style="background-image: url(images/car-3.jpg);">
-                    </div>
-                    <div class="text">
-                        <h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
-                        <div class="d-flex mb-3">
-                            <p class="price ml-auto">$500 <span>/day</span></p>
-                        </div>
-                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a
-                                href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

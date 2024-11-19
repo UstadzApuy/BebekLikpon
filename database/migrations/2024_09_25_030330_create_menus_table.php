@@ -14,14 +14,13 @@ return new class extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug');
-            $table->integer('price');
-            $table->text('thumbnail');
-            $table->string('tipemasak');
-            $table->string('lalapan');
-            $table->string('sambal');
-            $table->string('paket');
-            $table->longtext('description');
+            $table->string('slug')->unique();
+            $table->decimal('price', 8, 2);
+            $table->string('thumbnail')->nullable();
+            $table->enum('kategori', ['Makanan', 'Minuman']);
+            $table->enum('tipe', ['Ala Carte', 'Paket']);
+            $table->string('extra')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

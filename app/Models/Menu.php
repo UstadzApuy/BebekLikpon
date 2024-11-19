@@ -9,15 +9,19 @@ class Menu extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-    
-    protected $casts = [
-        'tipemasak' => 'array',
-    ];
-
-    // Menambahkan relasi many-to-many dengan Order
-    public function orders()
+    protected $guarded = ['id']; 
+    protected $fillable = [
+         'title',
+          'slug', 
+          'price', 
+          'thumbnail', 
+          'kategori', 
+          'tipe', 
+          'extra', 
+          'description', ]; 
+    protected $casts = [ 'extra' => 'string', ];
+    public function pemesanans()
     {
-        return $this->belongsToMany(Order::class)->withPivot('quantity');
+        return $this->hasMany(Pemesanan::class);
     }
 }

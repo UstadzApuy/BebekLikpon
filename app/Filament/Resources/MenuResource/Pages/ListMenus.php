@@ -13,7 +13,9 @@ class ListMenus extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->label('Tambah Menu Baru')
+                ->icon('heroicon-o-squares-plus')
         ];
     }
 }

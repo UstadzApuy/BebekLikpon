@@ -20,11 +20,21 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin',
             'role' => Role::Admin,
             'email' => 'admin@mail.com',
+            'unique_code' => 'admin123'
         ]);
+
+        User::factory()->create([
+            'name' => 'SuperAdmin',
+            'role' => Role::SuperAdmin,
+            'email' => 'superadmin@mail.com',
+            'unique_code' => 'superadmin123'
+        ]);
+
         User::factory()->create([
             'name' => 'Pelanggan',
             'role' => Role::User,
             'email' => 'pelanggan@mail.com',
+            'unique_code' => 'pelanggan123'
         ]);
     }
 }

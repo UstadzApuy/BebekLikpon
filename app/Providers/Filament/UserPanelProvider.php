@@ -2,8 +2,12 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\CartPage;
+use App\Filament\Pages\MenuPage;
+use App\Filament\Pages\UserDashboard;
 use App\Filament\User\Widgets\menu;
 use App\Livewire\Pages\Auth\Login;
+use Filament\Facades\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -22,6 +26,14 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class UserPanelProvider extends PanelProvider
 {
+ 
+    public function boot()
+{
+    Filament::registerPages([
+        \App\Filament\User\Pages\MenuPage::class,
+        \App\Filament\User\Pages\CartPage::class,
+    ]);
+}
     public function panel(Panel $panel): Panel
     {
         return $panel
@@ -36,10 +48,11 @@ class UserPanelProvider extends PanelProvider
             ->discoverPages(in: app_path('Filament/User/Pages'), for: 'App\\Filament\\User\\Pages')
             ->pages([
                 Pages\Dashboard::class,
+                
             ])
             ->discoverWidgets(in: app_path('Filament/User/Widgets'), for: 'App\\Filament\\User\\Widgets')
             ->widgets([
-                menu::class,
+                Widgets\AccountWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
