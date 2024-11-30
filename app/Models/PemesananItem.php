@@ -11,7 +11,7 @@ class PemesananItem extends Model
 
     public function pemesanan()
     {
-        return $this->hasMany(Pemesanan::class);
+        return $this->belongsTo(Pemesanan::class);
     }
 
     public function menu()

@@ -58,16 +58,26 @@ class CartController extends Controller
 
     public function update(Request $request, $id)
     {
-        $cart = session()->get('cart', []);
-
-        if (isset($cart[$id])) {
-            $quantity = $request->input('quantity', 1);
-            $cart[$id]['quantity'] = max($quantity, 1); // Pastikan kuantitas minimal 1
-            session()->put('cart', $cart);
+        // Cari item cart berdasarkan id dan user yang login
+        $cartItem = Cart::where('id', $id)->where('user_id', auth()->id())->first();
+    
+        if (!$cartItem) {
+            return redirect()->back()->with('error', 'Cart item not found.');
         }
-
-        return redirect()->route('cart.show')->with('success', 'Cart updated successfully!');
+    
+        // Validasi input kuantitas
+        $quantity = $request->input('quantity', 1);
+        if ($quantity < 1) {
+            return redirect()->back()->with('error', 'Quantity must be at least 1.');
+        }
+    
+        // Update kuantitas
+        $cartItem->quantity = $quantity;
+        $cartItem->save();
+    
+        return redirect()->back()->with('success', 'Cart updated successfully!');
     }
+    
 
     public function remove($id)
     {
@@ -114,7 +124,7 @@ class CartController extends Controller
         // Hapus cart setelah checkout
         Cart::where('user_id', $user->id)->delete();
     
-        return redirect()->route('menu.index')->with('success', 'Order placed successfully!');
+        return redirect()->back()->with('success', 'Order placed successfully!');
     }
     
     

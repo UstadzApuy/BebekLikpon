@@ -6,7 +6,7 @@ use App\Filament\Resources\PemesananResource\Pages;
 use App\Models\Menu;
 use App\Models\Pemesanan;
 use Filament\Forms;
-use Filament\Resources\Resource;
+use Filament\Resources\Resource;    
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Components\Select;
@@ -20,7 +20,7 @@ class PemesananResource extends Resource
 {
     protected static ?string $model = Pemesanan::class;
 
-            
+    protected static ?string $navigationLabel = 'Pemesanan';            
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
 
     public static function form(Form $form): Form

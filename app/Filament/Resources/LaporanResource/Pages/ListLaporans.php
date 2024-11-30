@@ -20,15 +20,17 @@ class ListLaporans extends ListRecords
         return [
             ActionGroup::make(
                 [
-                Action::make('export_pdf')
+                    Action::make('export_pdf')
                     ->label('Export to PDF')
                     ->icon('heroicon-o-printer')
                     ->action(function () {
-                        $orders = Pemesanan::with(['user', 'items.menu'])->get();
+                        $orders = Pemesanan::with(['user', 'items.menu'])
+                            ->where('status', 'completed') // Hanya ambil pesanan dengan status completed
+                            ->get();
                         $pdf = Pdf::loadView('exports.orders', ['orders' => $orders]);
                         return response()->streamDownload(
                             fn () => print($pdf->stream()),
-                            'orders_report.pdf'
+                            'completed_orders_report.pdf'
                         );
                     }),
                 Action::make('export_excel')

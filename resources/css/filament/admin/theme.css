@@ -1,0 +1,18 @@
+@import '/vendor/filament/filament/resources/css/theme.css';
+
+@config 'tailwind.config.js';
+
+/* Set the background for the login panel */
+.fi-simple-layout {
+    /* background-image: url('../images/bg_1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; */
+    @apply bg-orange-100/90 shadow-lg rounded-lg p-6;
+}
+
+
+/* Adjust the main content area styling */
+.fi-simple-main {
+    @apply bg-white/90 shadow-lg rounded-lg p-6; /* Example: Customize this as needed */
+}

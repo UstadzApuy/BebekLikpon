@@ -41,28 +41,33 @@ class LaporanResource extends Resource
         ])
 
         ->filters([
-            // Add filters if needed
+            Tables\Filters\SelectFilter::make('status')
+                ->label('Status')
+                ->options([
+                    'completed' => 'Completed',
+                ])
+                ->default('completed'),
         ])
         ->actions([
-            Tables\Actions\ActionGroup::make([
+            
                 Action::make('export_pdf')
-                ->label('Export to PDF')
-                ->action(function () {
-                    $orders = Pemesanan::with(['user', 'items.menu'])->get();
-                    $pdf = Pdf::loadView('exports.orders', ['orders' => $orders]);
-                    return response()->streamDownload(
-                        fn () => print($pdf->stream()),
-                        'orders_report.pdf'
-                    );
-                }),
+                    ->label('Export PDF')
+                    ->icon('heroicon-o-document-text')
+                    ->action(function ($record) { // $record merepresentasikan baris data
+                        $order = Pemesanan::with(['user', 'items.menu'])
+                            ->find($record->id); // Cari pesanan berdasarkan ID
+                        
+                        if (!$order) {
+                            throw new \Exception('Order not found!');
+                        }
 
-            Action::make('export_excel')
-                ->label('Export to Excel')
-                ->action(function () {
-                    return Excel::download(new OrdersExport, 'orders_report.xlsx');
-                }),
-            ])
-        ]);
+                        $pdf = Pdf::loadView('exports.order', ['order' => $order]);
+                        return response()->streamDownload(
+                            fn () => print($pdf->stream()),
+                            'order_' . $order->id . '_report.pdf'
+                        );
+                    }),
+                ]);
 }
 
 

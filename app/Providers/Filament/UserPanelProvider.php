@@ -30,8 +30,8 @@ class UserPanelProvider extends PanelProvider
     public function boot()
 {
     Filament::registerPages([
-        \App\Filament\User\Pages\MenuPage::class,
-        \App\Filament\User\Pages\CartPage::class,
+        // \App\Filament\User\Pages\MenuPage::class,
+        // \App\Filament\User\Pages\CartPage::class,
     ]);
 }
     public function panel(Panel $panel): Panel

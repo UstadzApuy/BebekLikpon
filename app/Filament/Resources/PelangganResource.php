@@ -20,7 +20,7 @@ class PelangganResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
-    protected static ?string $navigationLabel = 'Tambah Admin';
+    protected static ?string $navigationLabel = 'Tambah Pelanggan';
 
     public static function form(Form $form): Form
     {
@@ -35,12 +35,9 @@ class PelangganResource extends Resource
                     ->label('Email'),
                 Forms\Components\Select::make('role')
                     ->options([
-                        'SuperAdmin' => 'Super Admin',
-                        'Admin' => 'Admin',
                         'User' => 'User',
                     ])
-                    ->default('User')
-                    ->disabled()
+                    
                     ->required()
                     ->label('Role'),
 
@@ -77,7 +74,12 @@ class PelangganResource extends Resource
                     ->formatStateUsing(fn ($state) => $state->name),
             ])
             ->filters([
-                // Add any filters here if needed
+                Tables\Filters\SelectFilter::make('role')
+                ->label('Role')
+                ->options([
+                    'user' => 'User',
+                ])
+                ->default('user'),
             ]);
     }
 

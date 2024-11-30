@@ -34,7 +34,7 @@
 							<p class="price ml-auto">Rp {{ number_format($menu->price, 0, ',', '.') }}</p>
 						</div>
 						<p class="d-flex mb-0 d-block">
-							<form action="{{ route('cart.add', $menu->id) }}" method="POST">
+							{{-- <form action="{{ route('cart.add', $menu->id) }}" method="POST">
 								@csrf
 								<div class="input-group mb-3">
 									<input type="number" name="quantity" value="1" min="1" class="form-control">
@@ -42,7 +42,7 @@
 										<button class="btn btn-primary" type="submit">Add to Cart</button>
 									</div>
 								</div>
-							</form>
+							</form> --}}
 							<a href="{{ route('menu.show', $menu->slug) }}" class="btn btn-secondary py-2 ml-1">Details</a>
 						</p>
 						

@@ -47,7 +47,7 @@
           {{-- <li class="nav-item"><a href="{{ route('services') }}" class="nav-link">Services</a></li> --}}
           <li class="nav-item"><a href="{{ route('menu.index') }}" class="nav-link">Menu</a></li>
           
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="{{ route('cart.show') }}" class="nav-link">
                 Cart
             </a>
@@ -68,8 +68,9 @@
                       <span aria-hidden="true">&times;</span>
                   </button>
               </div>
-          @endif
-              <li><a href="{{ url('/login') }}" class="btn btn-secondary py-2 ml-1">Login</a></li>
+          @endif --}}
+          <li><a href="{{ url('/login') }}" class="nav-link" style="background-color: orange; border-color: orange; color: white; border-radius: 10px;">Login</a></li>
+
           {{-- <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li> --}}
         </ul>
       </div>

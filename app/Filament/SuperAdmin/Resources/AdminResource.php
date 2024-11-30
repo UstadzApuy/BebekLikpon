@@ -35,12 +35,10 @@ class AdminResource extends Resource
                     ->label('Email'),
                 Forms\Components\Select::make('role')
                     ->options([
-                        'SuperAdmin' => 'Super Admin',
+                        
                         'Admin' => 'Admin',
-                        'User' => 'User',
+                        
                     ])
-                    ->default('Admin')
-                    ->disabled()
                     ->required()
                     ->label('Role'),
 
