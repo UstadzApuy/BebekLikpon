@@ -33,12 +33,15 @@ class ListLaporans extends ListRecords
                             'completed_orders_report.pdf'
                         );
                     }),
-                Action::make('export_excel')
-                    ->label('Export to Excel')
-                    ->icon('heroicon-o-printer')
-                    ->action(function () {
-                        return Excel::download(new OrdersExport, 'orders_report.xlsx');
-                    }),
+                 Action::make('export_excel')
+                        ->label('Export to Excel')
+                        ->icon('heroicon-o-printer')
+                        ->action(function () {
+                            $orders = Pemesanan::with(['user', 'items.menu'])
+                                ->where('status', 'completed') // Filter pesanan dengan status completed
+                                ->get();
+                            return Excel::download(new OrdersExport($orders), 'completed_orders_report.xlsx');
+                        }),
             ])
             ->label('Export')
             ->icon('heroicon-o-printer')

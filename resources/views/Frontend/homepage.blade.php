@@ -210,37 +210,56 @@
           <div class="carousel-testimony owl-carousel ftco-owl">
             <div class="item">
               <div class="testimony-wrap rounded text-center py-4 pb-5">
-                <div class="user-img mb-2" style="background-image: url(images/person_1.jpg)">
+                <div class="user-img mb-2" style="background-image: url({{ asset('frontend/images/person_1.jpg')}});">
                 </div>
                 <div class="text pt-4">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
-                  <p class="name">Roger Scott</p>
-                  <span class="position">Marketing Manager</span>
+                  <p class="mb-4">Bagaikan Sebuah Kanvas.</p>
+                  <p class="name">Attar</p>
+                  <span class="position">Project Manager</span>
                 </div>
               </div>
             </div>
             <div class="item">
               <div class="testimony-wrap rounded text-center py-4 pb-5">
-                <div class="user-img mb-2" style="background-image: url(images/person_2.jpg)">
+                <div class="user-img mb-2" style="background-image: url({{ asset('frontend/images/person_2.jpg')}});">
                 </div>
                 <div class="text pt-4">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
-                  <p class="name">Roger Scott</p>
-                  <span class="position">Interface Designer</span>
+                  <p class="mb-4">Ayaya.</p>
+                  <p class="name">Julice</p>
+                  <span class="position">Document Analyst</span>
                 </div>
               </div>
             </div>
             <div class="item">
               <div class="testimony-wrap rounded text-center py-4 pb-5">
-                <div class="user-img mb-2" style="background-image: url(images/person_3.jpg)">
+                <div class="user-img mb-2" style="background-image: url({{ asset('frontend/images/person_3.jpg')}});">
                 </div>
                 <div class="text pt-4">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
-                  <p class="name">Roger Scott</p>
-                  <span class="position">UI Designer</span>
+                  <p class="mb-4">Enak kayak masakan mamaku.</p>
+                  <p class="name">Nadia</p>
+                  <span class="position">SAQA</span>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="testimony-wrap rounded text-center py-4 pb-5">
+                <div class="user-img mb-2" style="background-image: url({{ asset('frontend/images/person_4.jpg')}});">
+                </div>
+                <div class="text pt-4">
+                  <p class="mb-4">Alamak Mantap Banget Cik.</p>
+                  <p class="name">Galih</p>
+                  <span class="position">Developer</span>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="testimony-wrap rounded text-center py-4 pb-5">
+                <div class="user-img mb-2" style="background-image: url({{ asset('frontend/images/person_5.jpg')}});">
+                </div>
+                <div class="text pt-4">
+                  <p class="mb-4">Gassss.</p>
+                  <p class="name">Tiara</p>
+                  <span class="position">Developer</span>
                 </div>
               </div>
             </div>

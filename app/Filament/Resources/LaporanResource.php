@@ -82,8 +82,6 @@ class LaporanResource extends Resource
     {
         return [
             'index' => Pages\ListLaporans::route('/'),
-            'create' => Pages\CreateLaporan::route('/create'),
-            'edit' => Pages\EditLaporan::route('/{record}/edit'),
         ];
     }
     

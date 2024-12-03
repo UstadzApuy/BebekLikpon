@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class OrdersExport implements FromCollection, WithHeadings
 {
+
     public function collection()
     {
         return Pemesanan::with(['user', 'items.menu'])->get()->map(function ($order) {
