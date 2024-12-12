@@ -29,6 +29,9 @@ class PelangganResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->label('Name'),
+                Forms\Components\TextInput::make('phone_number')
+                    ->required()
+                    ->label('No. Handphone'),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
@@ -65,6 +68,10 @@ class PelangganResource extends Resource
                     ->label('Name')
                     ->sortable()
                     ->searchable(),
+                TextColumn::make('phone_number')
+                    ->label('No. HandPhone')
+                    ->sortable()
+                    ->searchable(),    
                 TextColumn::make('email')
                     ->label('Email')
                     ->sortable()

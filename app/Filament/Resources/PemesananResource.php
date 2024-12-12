@@ -68,12 +68,18 @@ class PemesananResource extends Resource
                 ])
                 ->default('pending')
                 ->label('Status'),
-
+            
+            Forms\Components\FileUpload::make('payment_proof')
+            ->required()
+            ->columnSpanFull(),
+            
             TextInput::make('unique_code')
                 ->hidden()
                 ->label('Unique Code')
                 ->default(auth()->user()->unique_code)
                 ->disabled(), 
+            
+            
         ]);
     }
 
@@ -88,6 +94,7 @@ class PemesananResource extends Resource
                 //     ->extraAttributes(['style' => 'white-space: pre-line;']),
 
                 TextColumn::make('status')->label('Status'),
+                Tables\Columns\ImageColumn::make('payment_proof'),
                 TextColumn::make('created_at')->label('Ordered At')->dateTime(),
             ])
             ->filters([

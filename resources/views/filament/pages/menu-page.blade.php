@@ -1,103 +1,156 @@
 <x-filament::page>
     <!DOCTYPE html>
     <html lang="en">
-    
+
     <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-      <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
-        rel="stylesheet">
-    
-        <link rel="stylesheet" href="{{ asset('frontend/css/open-iconic-bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}">
-        
-        <link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/owl.theme.default.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/magnific-popup.css') }}">
-        
-        <link rel="stylesheet" href="{{ asset('frontend/css/aos.css') }}">
-        
-        <link rel="stylesheet" href="{{ asset('frontend/css/ionicons.min.css') }}">
-        
-        <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-datepicker.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/jquery.timepicker.css') }}">
-        
-        <link rel="stylesheet" href="{{ asset('frontend/css/flaticon.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/icomoon.css') }}">
-        <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">    
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Our Menu</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f8f9fa;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+                text-align: center;
+            }
+
+            h2 {
+                margin-bottom: 20px;
+                color: #333;
+                font-size: 2rem;
+            }
+
+            .menu-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+            }
+
+            .menu-item {
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                text-align: left;
+            }
+
+            .menu-thumbnail {
+                width: 100%;
+                height: 200px;
+                background-size: cover;
+                background-position: center;
+            }
+
+            .menu-details {
+                padding: 15px;
+                flex: 1;
+            }
+
+            .menu-title {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+                color: #333;
+                text-decoration: none;
+            }
+
+            .menu-title:hover {
+                color: #007bff;
+            }
+
+            .menu-price {
+                font-size: 1rem;
+                color: #28a745;
+                margin-bottom: 15px;
+            }
+
+            .menu-actions {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: auto;
+            }
+
+            .menu-actions form {
+                display: flex;
+                align-items: center;
+            }
+
+            .menu-actions input[type="number"] {
+                width: 60px;
+                margin-right: 10px;
+                padding: 5px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+
+            .menu-actions button,
+            .menu-actions a {
+                background-color: #007bff;
+                color: #fff;
+                padding: 8px 12px;
+                border: none;
+                border-radius: 4px;
+                text-decoration: none;
+                cursor: pointer;
+                font-size: 0.9rem;
+            }
+
+            .menu-actions a {
+                background-color: #6c757d;
+            }
+
+            .menu-actions button:hover,
+            .menu-actions a:hover {
+                opacity: 0.9;
+            }
+
+            .alert {
+                padding: 15px;
+                background-color: #ffc107;
+                color: #856404;
+                border-radius: 4px;
+            }
+        </style>
     </head>
-    
+
     <body>
-    
-                <div class="row">
-                    @forelse ($menus as $menu)
-                        <div class="col-md-4 mb-4">
-                            <div class="car-wrap rounded ftco-animate">
-                                <div class="img rounded d-flex align-items-end"
-                                     style="background-image: url('{{ Storage::url($menu->thumbnail) }}'); height: 200px; background-size: cover;">
-                                </div>
-                                <div class="text p-3">
-                                    <h2 class="mb-2">
-                                        <a href="{{ route('menu.show', $menu->slug) }}">{{ $menu->title }}</a>
-                                    </h2>
-                                    <p class="price">Rp {{ number_format($menu->price, 0, ',', '.') }}</p>
-                                    <div class="d-flex justify-content-between">
-                                        <form action="{{ route('cart.add', $menu->id) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            <input type="number" name="quantity" value="1" min="1" class="form-control mb-2">
-                                            <button type="submit" class="btn btn-primary">Add to Cart</button>
-                                        </form>
-                                        <a href="{{ route('menu.show', $menu->slug) }}" class="btn btn-secondary">Details</a>
-                                    </div>
-                                </div>
+        <div class="container">
+            <h2>Our Menu</h2>
+            <div class="menu-grid">
+                @forelse ($menus as $menu)
+                    <div class="menu-item">
+                        <div class="menu-thumbnail" style="background-image: url('{{ Storage::url($menu->thumbnail) }}');"></div>
+                        <div class="menu-details">
+                            <h4 class="menu-title">
+                                <a href="{{ route('menu.show', $menu->slug) }}">{{ $menu->title }}</a>
+                            </h4>
+                            <p class="menu-price">Rp {{ number_format($menu->price, 0, ',', '.') }}</p>
+                            <div class="menu-actions">
+                                <form action="{{ route('cart.add', $menu->id) }}" method="POST">
+                                    @csrf
+                                    <input type="number" name="quantity" value="1" min="1">
+                                    <button type="submit">Add to Cart</button>
+                                </form>
+                                <a href="{{ route('menu.show', $menu->slug) }}">Details</a>
                             </div>
                         </div>
-                    @empty
-                        <div class="col-12 text-center">
-                            <p>No menus available at the moment. Please check back later!</p>
-                        </div>
-                    @endforelse
-                </div>
+                    </div>
+                @empty
+                    <div class="alert">No menus available at the moment. Please check back later!</div>
+                @endforelse
+            </div>
+        </div>
+    </body>
 
-                @if(session('success'))
-              <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  {{ session('success') }}
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-          @endif
-          @if(session('error'))
-              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  {{ session('error') }}
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-          @endif
-    </body>
-    
-        <script src="{{ asset('frontend/js/jquery.min.js')}}"></script>
-        <script src="{{ asset('frontend/js/jquery-migrate-3.0.1.min.js')}}"></script>
-        <script src="{{ asset('frontend/js/popper.min.js')}}"></script>
-        <script src="{{ asset('frontend/js/bootstrap.min.js')}}"></script>
-        <script src="{{ asset('frontend/js/jquery.easing.1.3.js')}}"></script>
-        <script src="{{ asset('frontend/js/jquery.waypoints.min.js')}}"></script>
-        <script src="{{ asset('frontend/js/jquery.stellar.min.js')}}"></script>
-        <script src="{{ asset('frontend/js/owl.carousel.min.js')}}"></script>
-        <script src="{{ asset('frontend/js/jquery.magnific-popup.min.js')}}"></script>
-        <script src="{{ asset('frontend/js/aos.js')}}"></script>
-        <script src="{{ asset('frontend/js/jquery.animateNumber.min.js')}}"></script>
-        <script src="{{ asset('frontend/js/bootstrap-datepicker.js')}}"></script>
-        <script src="{{ asset('frontend/js/jquery.timepicker.min.js')}}"></script>
-        <script src="{{ asset('frontend/js/scrollax.min.js')}}"></script>
-        <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <script src="{{ asset('frontend/js/google-map.js')}}"></script>
-        <script src="{{ asset('frontend/js/main.js')}}"></script>
-        
-    </body>
-    
     </html>
 </x-filament::page>

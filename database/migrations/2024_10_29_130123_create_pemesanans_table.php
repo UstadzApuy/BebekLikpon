@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->enum('status', ['pending', 'completed', 'canceled'])->default('pending');
+            $table->string('payment_proof')->nullable();
             $table->timestamps();
         });
     }

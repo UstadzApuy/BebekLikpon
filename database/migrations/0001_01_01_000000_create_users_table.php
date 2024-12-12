@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id(); // Ini adalah kolom ID utama
             $table->string('unique_code')->unique()->nullable();
             $table->string('name');
+            $table->string('phone_number')->nullable();
             $table->string('role');
             $table->string('email')->unique();
             $table->string('password');

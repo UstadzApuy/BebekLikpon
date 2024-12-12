@@ -14,6 +14,7 @@ class Pemesanan extends Model
         'user_id', 
         'status',
         'unique_code',
+        'payment_proof',
     ];
 
     public function menu()

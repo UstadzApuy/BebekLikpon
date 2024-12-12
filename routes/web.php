@@ -12,10 +12,10 @@ Route::get('/menu', [MenuController::class, 'index'])->name('menu.index'); // Me
 Route::get('/menu/{menu:slug}', [MenuController::class, 'show'])->name('menu.show'); // Menu details
 Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
+    Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
     Route::post('/cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
     Route::put('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
     Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
-    Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 });
 
 

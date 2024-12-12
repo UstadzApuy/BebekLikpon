@@ -1,7 +1,5 @@
-<!-- resources/views/filament/pages/user-order-history.blade.php -->
-
 <x-filament::page>
-    <div class="space-y-4">
+    <div class="space-y-4 mx-auto max-w-6xl">
         <h1 class="text-2xl font-bold">Riwayat Pemesanan</h1>
         <p class="text-gray-600">Lihat status pemesanan Anda di sini.</p>
 
