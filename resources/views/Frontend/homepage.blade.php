@@ -64,7 +64,7 @@
                     </div>
                   </div>
                 </div>
-                <p class="text-center mt-5"><a href="#"
+                <p class="text-center mt-5"><a href="https://wa.me/6285955360078?text=Hai%20aku%20ingin%20mendaftar%20ke%20aplikasi%20likpon%20berikut%20dataku%0A%0ANama%3A%0AAlamat%20Email%3A%0APassword%3A%0ANo.%20telp%3A"
                     class="btn text-center mx-auto m-auto ml-auto btn-primary py-3 px-4">Mulai Mendaftar Sekarang</a>
                 </p>
               </div>
@@ -190,7 +190,7 @@
       <div class="row justify-content-end">
         <div class="col-md-6 heading-section heading-section-white ftco-animate">
           <h2 class="mb-3">Tunggu apalagi?</h2>
-          <a href="#" class="btn btn-primary btn-lg">Ayo Daftar Untuk Memesan</a>
+          <a href="https://wa.me/6285955360078?text=Hai%20aku%20ingin%20mendaftar%20ke%20aplikasi%20likpon%20berikut%20dataku%0A%0ANama%3A%0AAlamat%20Email%3A%0APassword%3A%0ANo.%20telp%3A" class="btn btn-primary btn-lg">Ayo Daftar Untuk Memesan</a>
         </div>
       </div>
     </div>
