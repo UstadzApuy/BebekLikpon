@@ -1,4 +1,5 @@
 <x-filament::page>
+    
     <div class="container mx-auto max-w-4xl px-4 py-6">
         <h2 class="text-2xl font-bold text-center mb-4">Shopping Cart</h2>
         
